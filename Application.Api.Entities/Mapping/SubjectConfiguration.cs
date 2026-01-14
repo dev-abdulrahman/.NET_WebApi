@@ -13,14 +13,15 @@ namespace Application.Api.Entities.Mapping
 
             builder.Property(a => a.Name).IsRequired().HasMaxLength(500);
             builder.Property(a => a.Description).IsRequired().HasMaxLength(2000);
+            builder.Property(a => a.ImageName).IsRequired(false).HasMaxLength(100);
             
             builder.ConfigureBaseEntity<Subject>();
             
             // Navigation Properties
-            builder.HasOne(x => x.Branch).WithMany(x => x.Subjects).HasForeignKey(x => x.BranchId);
+            builder.HasOne<Branch>(x => x.Branch).WithMany(x => x.Subjects).HasForeignKey(x => x.BranchId);
 
-            builder.HasMany(x => x.Chapters).WithOne(x => x.Subject).HasForeignKey(x => x.ChapterId);
-            builder.HasMany(x => x.Announcements).WithOne(x => x.Subject).HasForeignKey(x => x.AnnouncementId);
+            builder.HasMany<Chapter>(x => x.Chapters).WithOne(x => x.Subject).HasForeignKey(x => x.SubjectId);
+            builder.HasMany<Announcement>(x => x.Announcements).WithOne(x => x.Subject).HasForeignKey(x => x.SubjectId);
         }
     }
 }
