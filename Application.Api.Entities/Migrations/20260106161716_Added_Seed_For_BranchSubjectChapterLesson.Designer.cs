@@ -4,6 +4,7 @@ using Application.Api.Entities.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Application.Api.Entities.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260106161716_Added_Seed_For_BranchSubjectChapterLesson")]
+    partial class Added_Seed_For_BranchSubjectChapterLesson
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,11 +128,11 @@ namespace Application.Api.Entities.Migrations
                         {
                             BranchId = 1,
                             CreatedBy = 1,
-                            CreatedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6940),
+                            CreatedDate = new DateTime(2026, 1, 6, 21, 47, 14, 627, DateTimeKind.Local).AddTicks(7284),
                             Description = "",
                             IsActive = true,
                             LastModifiedBy = 1,
-                            LastModifiedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6941),
+                            LastModifiedDate = new DateTime(2026, 1, 6, 21, 47, 14, 627, DateTimeKind.Local).AddTicks(7285),
                             Name = "Civil Engineering"
                         });
                 });
@@ -235,10 +238,10 @@ namespace Application.Api.Entities.Migrations
                             ChapterId = 1,
                             Content = "",
                             CreatedBy = 1,
-                            CreatedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6989),
+                            CreatedDate = new DateTime(2026, 1, 6, 21, 47, 14, 627, DateTimeKind.Local).AddTicks(7353),
                             IsActive = true,
                             LastModifiedBy = 1,
-                            LastModifiedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6990),
+                            LastModifiedDate = new DateTime(2026, 1, 6, 21, 47, 14, 627, DateTimeKind.Local).AddTicks(7354),
                             Order = 1,
                             SubjectId = 1,
                             Title = "Chapter-1"
@@ -292,10 +295,10 @@ namespace Application.Api.Entities.Migrations
                         {
                             CityId = 1,
                             CreatedBy = 1,
-                            CreatedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6726),
+                            CreatedDate = new DateTime(2026, 1, 6, 21, 47, 14, 627, DateTimeKind.Local).AddTicks(6992),
                             IsActive = true,
                             LastModifiedBy = 1,
-                            LastModifiedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6739),
+                            LastModifiedDate = new DateTime(2026, 1, 6, 21, 47, 14, 627, DateTimeKind.Local).AddTicks(7003),
                             Name = "Nanded"
                         });
                 });
@@ -347,10 +350,10 @@ namespace Application.Api.Entities.Migrations
                         {
                             CountryId = 1,
                             CreatedBy = 1,
-                            CreatedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6918),
+                            CreatedDate = new DateTime(2026, 1, 6, 21, 47, 14, 627, DateTimeKind.Local).AddTicks(7254),
                             IsActive = true,
                             LastModifiedBy = 1,
-                            LastModifiedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6919),
+                            LastModifiedDate = new DateTime(2026, 1, 6, 21, 47, 14, 627, DateTimeKind.Local).AddTicks(7255),
                             Name = "India"
                         });
                 });
@@ -458,11 +461,11 @@ namespace Application.Api.Entities.Migrations
                             LessonId = 1,
                             ChapterId = 1,
                             CreatedBy = 1,
-                            CreatedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(7009),
+                            CreatedDate = new DateTime(2026, 1, 6, 21, 47, 14, 627, DateTimeKind.Local).AddTicks(7378),
                             Description = "Lesson on Mechanics",
                             IsActive = true,
                             LastModifiedBy = 1,
-                            LastModifiedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(7010),
+                            LastModifiedDate = new DateTime(2026, 1, 6, 21, 47, 14, 627, DateTimeKind.Local).AddTicks(7379),
                             LessonType = 1,
                             Title = "Lesson-1"
                         });
@@ -933,11 +936,11 @@ namespace Application.Api.Entities.Migrations
                             SubjectId = 1,
                             BranchId = 1,
                             CreatedBy = 1,
-                            CreatedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6966),
+                            CreatedDate = new DateTime(2026, 1, 6, 21, 47, 14, 627, DateTimeKind.Local).AddTicks(7325),
                             Description = "",
                             IsActive = true,
                             LastModifiedBy = 1,
-                            LastModifiedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6967),
+                            LastModifiedDate = new DateTime(2026, 1, 6, 21, 47, 14, 627, DateTimeKind.Local).AddTicks(7326),
                             Name = "Engineering Mechanics"
                         });
                 });

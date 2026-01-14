@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.22">
       <PrivateAssets>all</PrivateAssets>
@@ -17,20 +19,32 @@
 
 	<ItemGroup>
 		<Compile Remove="Application.Api.Entities\**" />
+		<Compile Remove="Application.Api.Validations\**" />
 		<EmbeddedResource Remove="Application.Api.Entities\**" />
+		<EmbeddedResource Remove="Application.Api.Validations\**" />
 		<None Remove="Application.Api.Entities\**" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="Application.Api.Services\**" />
 		<Content Remove="Application.Api.Entities\**" />
 		<Content Remove="Application.Api.Services\**" />
+		<Content Remove="Application.Api.Validations\**" />
+		<Content Remove="Application.Api.ViewModels\**" />
 		<EmbeddedResource Remove="Application.Api.Services\**" />
 		<None Remove="Application.Api.Services\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Application.Api.ViewModels\**" />
+		<EmbeddedResource Remove="Application.Api.ViewModels\**" />
+		<None Remove="Application.Api.Validations\**" />
+		<None Remove="Application.Api.ViewModels\**" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="Application.Api.Entities\Application.Api.Entities.csproj" />
 	  <ProjectReference Include="Application.Api.Services\Application.Api.Services.csproj" />
+	  <ProjectReference Include="Application.Api.Validations\Application.Api.Validations.csproj" />
+	  <ProjectReference Include="Application.Api.ViewModels\Application.Api.ViewModels.csproj" />
 	</ItemGroup>
 	
 

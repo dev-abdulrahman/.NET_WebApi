@@ -4,6 +4,7 @@ using Application.Api.Entities.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Application.Api.Entities.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260103064825_Added City and Country Seed Data")]
+    partial class AddedCityandCountrySeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,19 +122,6 @@ namespace Application.Api.Entities.Migrations
                     b.HasKey("BranchId");
 
                     b.ToTable("Branch", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            BranchId = 1,
-                            CreatedBy = 1,
-                            CreatedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6940),
-                            Description = "",
-                            IsActive = true,
-                            LastModifiedBy = 1,
-                            LastModifiedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6941),
-                            Name = "Civil Engineering"
-                        });
                 });
 
             modelBuilder.Entity("Application.Api.Entities.Models.Certificate", b =>
@@ -228,21 +218,6 @@ namespace Application.Api.Entities.Migrations
                     b.HasKey("ChapterId");
 
                     b.ToTable("Chapter", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            ChapterId = 1,
-                            Content = "",
-                            CreatedBy = 1,
-                            CreatedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6989),
-                            IsActive = true,
-                            LastModifiedBy = 1,
-                            LastModifiedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6990),
-                            Order = 1,
-                            SubjectId = 1,
-                            Title = "Chapter-1"
-                        });
                 });
 
             modelBuilder.Entity("Application.Api.Entities.Models.City", b =>
@@ -292,10 +267,10 @@ namespace Application.Api.Entities.Migrations
                         {
                             CityId = 1,
                             CreatedBy = 1,
-                            CreatedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6726),
+                            CreatedDate = new DateTime(2026, 1, 3, 12, 18, 24, 257, DateTimeKind.Local).AddTicks(7700),
                             IsActive = true,
                             LastModifiedBy = 1,
-                            LastModifiedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6739),
+                            LastModifiedDate = new DateTime(2026, 1, 3, 12, 18, 24, 257, DateTimeKind.Local).AddTicks(7710),
                             Name = "Nanded"
                         });
                 });
@@ -347,10 +322,10 @@ namespace Application.Api.Entities.Migrations
                         {
                             CountryId = 1,
                             CreatedBy = 1,
-                            CreatedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6918),
+                            CreatedDate = new DateTime(2026, 1, 3, 12, 18, 24, 257, DateTimeKind.Local).AddTicks(7826),
                             IsActive = true,
                             LastModifiedBy = 1,
-                            LastModifiedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6919),
+                            LastModifiedDate = new DateTime(2026, 1, 3, 12, 18, 24, 257, DateTimeKind.Local).AddTicks(7827),
                             Name = "India"
                         });
                 });
@@ -451,21 +426,6 @@ namespace Application.Api.Entities.Migrations
                     b.HasIndex("ChapterId");
 
                     b.ToTable("Lesson", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            LessonId = 1,
-                            ChapterId = 1,
-                            CreatedBy = 1,
-                            CreatedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(7009),
-                            Description = "Lesson on Mechanics",
-                            IsActive = true,
-                            LastModifiedBy = 1,
-                            LastModifiedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(7010),
-                            LessonType = 1,
-                            Title = "Lesson-1"
-                        });
                 });
 
             modelBuilder.Entity("Application.Api.Entities.Models.LessonProgress", b =>
@@ -857,10 +817,6 @@ namespace Application.Api.Entities.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("StudentId");
 
                     b.HasIndex("BranchId");
@@ -868,9 +824,6 @@ namespace Application.Api.Entities.Migrations
                     b.HasIndex("CityId");
 
                     b.HasIndex("CountryId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
 
                     b.ToTable("Student", (string)null);
                 });
@@ -926,20 +879,6 @@ namespace Application.Api.Entities.Migrations
                     b.HasIndex("BranchId");
 
                     b.ToTable("Subject", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            SubjectId = 1,
-                            BranchId = 1,
-                            CreatedBy = 1,
-                            CreatedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6966),
-                            Description = "",
-                            IsActive = true,
-                            LastModifiedBy = 1,
-                            LastModifiedDate = new DateTime(2026, 1, 14, 18, 45, 19, 361, DateTimeKind.Local).AddTicks(6967),
-                            Name = "Engineering Mechanics"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -1304,17 +1243,9 @@ namespace Application.Api.Entities.Migrations
                         .WithMany("Students")
                         .HasForeignKey("CountryId");
 
-                    b.HasOne("Application.Api.Entities.Models.User", "User")
-                        .WithOne("Student")
-                        .HasForeignKey("Application.Api.Entities.Models.Student", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("City");
 
                     b.Navigation("Country");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Application.Api.Entities.Models.Subject", b =>
@@ -1435,11 +1366,6 @@ namespace Application.Api.Entities.Migrations
                     b.Navigation("Announcements");
 
                     b.Navigation("Chapters");
-                });
-
-            modelBuilder.Entity("Application.Api.Entities.Models.User", b =>
-                {
-                    b.Navigation("Student");
                 });
 #pragma warning restore 612, 618
         }

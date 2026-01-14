@@ -4,5 +4,6 @@ namespace Application.Api.Entities.Models
 {
     public class User : IdentityUser
     {
+        public Student? Student { get; set; }
     }
 }
