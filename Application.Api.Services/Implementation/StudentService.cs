@@ -33,7 +33,8 @@ namespace Application.Api.Services.Implementation
         {
             try
             {
-                var student = await _context.Student.Where(x => x.UserId == userId).FirstAsync();
+                var student = await _context.Student.Where(x => x.IsActive && x.UserId == userId)
+                                                    .Include(x => x.Enrollments).FirstAsync();
                 if (student != null) 
                 {
                     return ServiceResult<Student>.Success(student);

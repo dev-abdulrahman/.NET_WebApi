@@ -60,7 +60,8 @@ namespace Application.WebApi.Controllers
                     PhoneNumber = registerViewModel.PhoneNumber,
                     UserId = user.Id,
                     Gender = (Gender)registerViewModel.Gender,
-                    Email = registerViewModel.Email
+                    Email = registerViewModel.Email,
+                    IsActive = true
                 };
 
                 var studentResult = await _studentService.Register(student);
@@ -87,11 +88,11 @@ namespace Application.WebApi.Controllers
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user == null)
-                return ApiResponseFactory.Unauthorized<LoginViewModel>("User is not registered. Please try registering the user first and try again.", "");
+                return ApiResponseFactory.Unauthorized<LoginViewModel>("Invalid Email or Password", "");
 
             var valid = await _userManager.CheckPasswordAsync(user, model.Password);
             if (!valid)
-                return ApiResponseFactory.BadRequest<LoginViewModel>("Incorrect Email or Password", "");
+                return ApiResponseFactory.BadRequest<LoginViewModel>("Invalid Email or Password", "");
 
             var roles = await _userManager.GetRolesAsync(user);
             var token = _tokenService.GenerateToken(user, roles);
@@ -101,8 +102,17 @@ namespace Application.WebApi.Controllers
             {
                 return ApiResponseFactory.NotFound<LoginViewModel>("Student not found with the provided credentials.", "");
             }
-
-            return ApiResponseFactory.Success(new { token, Name = result.Data?.FullName });
+            var login = new LoginResponseViewModel
+            {
+                Token = token,
+                Name = result.Data?.FullName,
+                Enrollments = result.Data?.Enrollments?.Select(e => new EnrolledViewModel
+                {
+                    BranchId = e.BranchId,
+                    IsEnrolled = true
+                }).ToList() ?? new List<EnrolledViewModel>()
+            };
+            return ApiResponseFactory.Success(login);
         }
     }
 }
