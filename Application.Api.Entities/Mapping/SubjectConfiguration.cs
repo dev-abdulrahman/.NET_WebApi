@@ -14,6 +14,8 @@ namespace Application.Api.Entities.Mapping
             builder.Property(a => a.Name).IsRequired().HasMaxLength(500);
             builder.Property(a => a.Description).IsRequired().HasMaxLength(2000);
             builder.Property(a => a.ImageName).IsRequired(false).HasMaxLength(100);
+            builder.Property(a => a.Price).HasPrecision(18, 2).IsRequired();
+            builder.Property(a => a.Discount).HasPrecision(18, 2).IsRequired(false);
             
             builder.ConfigureBaseEntity<Subject>();
             

@@ -6,6 +6,8 @@
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; }= string.Empty;
         public string ImageName { get; set; }= string.Empty;
+        public decimal Price { get; set; }
+        public decimal? Discount { get; set; }
 
         // Foreign Keys
         public int BranchId { get; set; }
