@@ -8,6 +8,8 @@ namespace Application.Api.Entities.Models
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public LessonType LessonType { get; set; }
+        public TimeSpan Duration { get; set; }
+        public string? VideoUrl { get; set; }
 
         // Foreign Keys
         public int ChapterId { get; set; }

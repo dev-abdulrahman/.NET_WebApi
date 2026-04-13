@@ -47,5 +47,11 @@ namespace Application.Api.Services.Implementation
 
             return ServiceResult<Student>.Failure($"No student found with the userId: {userId}");
         }
+
+        public async Task<IEnumerable<Student>> GetAllStudents()
+        {
+            return await _context.Student.Where(x => x.IsActive)
+                                         .Include(x => x.Enrollments).ToListAsync();
+        }
     }
 }

@@ -1,0 +1,93 @@
+﻿@model List<Application.Api.Entities.Models.Student>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mb-3"><i class="fa fa-dashboard"></i> Admin Dashboard</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div id="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (Model != null && Model.Any())
+{
+    <form method="post" action="/Home/EnrollSelected">
+
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        <input type="checkbox" id="selectAll" />
+                    </th>
+                    <th>Student Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="studentIds" value="@s.StudentId" />
+                        </td>
+                        <td>@s.FullName</td>
+                        <td>@s.Email</td>
+                        <td>
+                            @{
+                                if (s.Enrollments != null && s.Enrollments.Any())
+                                {
+                                    <span class="text-success">
+                                        <i class="fa fa-check-circle"></i> Enrolled
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="text-danger">
+                                        <i class="fa fa-lock"></i> Not Enrolled
+                                    </span>
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-success">
+            <i class="fa fa-user-plus"></i> Enroll Selected Students
+        </button>
+
+    </form>
+
+}
+else
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        No Students registered yet.
+    </div>
+}
+
+
+@section Scripts
+{
+    <script>
+        // Auto close alert after 5 seconds
+        setTimeout(function () {
+            const alert = document.getElementById("successAlert");
+            if (alert) {
+                const bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            }
+        }, 3000);
+
+        // Select all checkbox logic
+        document.getElementById("selectAll")?.addEventListener("change", function () {
+            const checkboxes = document.querySelectorAll('input[name="studentIds"]');
+            checkboxes.forEach(cb => cb.checked = this.checked);
+        });
+    </script>
+}

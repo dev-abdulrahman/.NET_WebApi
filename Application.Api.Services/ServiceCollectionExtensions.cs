@@ -13,6 +13,7 @@ namespace Application.Api.Services
             services.AddScoped<ISubjectService, SubjectService>();
             services.AddScoped<IChapterService, ChapterService>();
             services.AddScoped<ILessonService, LessonService>();
+            services.AddScoped<IEnrollmentService, EnrollmentService>();
         }
     }
 }
