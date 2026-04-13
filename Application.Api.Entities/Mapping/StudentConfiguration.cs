@@ -11,7 +11,8 @@ namespace Application.Api.Entities.Mapping
             builder.ToTable(nameof(Student));
             builder.HasKey(a => a.StudentId);
 
-            builder.Property(a => a.FullName).IsRequired().HasMaxLength(200);
+            builder.Property(a => a.FirstName).IsRequired().HasMaxLength(200);
+            builder.Property(a => a.LastName).IsRequired().HasMaxLength(200);
             builder.Property(a => a.Gender).IsRequired();
             builder.Property(a => a.Email).IsRequired().HasMaxLength(200);
             builder.Property(a => a.PhoneNumber).IsRequired().HasMaxLength(20);

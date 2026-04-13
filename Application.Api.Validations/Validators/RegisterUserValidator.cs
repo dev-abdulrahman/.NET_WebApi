@@ -18,8 +18,10 @@ namespace Application.Api.Validations.Validators
             RuleFor(x => x.ConfirmPassword)
                 .Equal(x => x.Password).WithMessage("Passwords do not match");
 
-            RuleFor(x => x.FullName)
-                .NotEmpty().WithMessage("Full name is required");
+            RuleFor(x => x.FirstName)
+                .NotEmpty().WithMessage("First name is required");
+            RuleFor(x => x.LastName)
+                .NotEmpty().WithMessage("Last name is required");
 
             RuleFor(x => x.PhoneNumber)
                 .NotEmpty().WithMessage("Phone number is required")

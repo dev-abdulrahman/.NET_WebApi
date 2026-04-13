@@ -56,7 +56,8 @@ namespace Application.WebApi.Controllers
 
                 student = new Student
                 {
-                    FullName = registerViewModel.FullName,
+                    FirstName = registerViewModel.FirstName,
+                    LastName = registerViewModel.LastName,
                     PhoneNumber = registerViewModel.PhoneNumber,
                     UserId = user.Id,
                     Gender = (Gender)registerViewModel.Gender,
@@ -75,7 +76,7 @@ namespace Application.WebApi.Controllers
 
             return ApiResponseFactory.Success(new
             {
-                student.FullName,
+                student.LastName,
                 student.PhoneNumber,
                 student.Gender,
                 student.Email
@@ -105,7 +106,7 @@ namespace Application.WebApi.Controllers
             var login = new LoginResponseViewModel
             {
                 Token = token,
-                Name = result.Data?.FullName,
+                Name = result.Data?.FirstName,
                 Enrollments = result.Data?.Enrollments?.Select(e => new EnrolledViewModel
                 {
                     BranchId = e.BranchId,
