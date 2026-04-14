@@ -19,6 +19,8 @@ namespace Application.Api.Entities.Mapping
             builder.Property(x => x.CityId).IsRequired(false);
             builder.Property(x => x.CountryId).IsRequired(false);
             builder.Property(x => x.UserId).IsRequired();
+            builder.Property(a => a.BoundDeviceId).IsRequired(false).HasMaxLength(200);
+            builder.Property(a => a.CurrentSessionId).IsRequired(false).HasMaxLength(200);
 
             builder.ConfigureBaseEntity<Student>();
 

@@ -4,6 +4,7 @@ using Application.Api.Services;
 using Application.Api.Services.Implementation;
 using Application.Api.Services.Interface;
 using Application.Api.Validations.Validators;
+using Application.WebApi.Middleware;
 using Application.WebApi.ResponseFactory;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -213,6 +214,8 @@ app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseMiddleware<SessionValidationMiddleware>();
 
 // For web api's
 app.MapControllers();

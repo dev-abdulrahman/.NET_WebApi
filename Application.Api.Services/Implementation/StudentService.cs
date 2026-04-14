@@ -53,5 +53,11 @@ namespace Application.Api.Services.Implementation
             return await _context.Student.Where(x => x.IsActive)
                                          .Include(x => x.Enrollments).ToListAsync();
         }
+
+        public void UpdateStudent(Student student)
+        {
+            _context.Student.Update(student);
+            _context.SaveChanges();
+        }
     }
 }

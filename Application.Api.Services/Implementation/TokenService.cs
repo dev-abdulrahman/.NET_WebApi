@@ -16,13 +16,15 @@ namespace Application.Api.Services.Implementation
         {
             _settings = options.Value;
         }
-        public string GenerateToken(User user, IList<string> roles)
+        public string GenerateToken(User user, IList<string> roles, string sessionId)
         {
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email!),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("SessionId", sessionId),
+                new Claim("UserId", user.Id),
             };
 
             foreach (var role in roles)

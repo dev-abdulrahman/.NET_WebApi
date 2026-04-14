@@ -95,14 +95,30 @@ namespace Application.WebApi.Controllers
             if (!valid)
                 return ApiResponseFactory.BadRequest<LoginViewModel>("Invalid Email or Password", "");
 
-            var roles = await _userManager.GetRolesAsync(user);
-            var token = _tokenService.GenerateToken(user, roles);
-
             var result = await _studentService.GetStudentByUserId(user.Id);
             if (!result.IsSuccess)
             {
-                return ApiResponseFactory.NotFound<LoginViewModel>("Student not found with the provided credentials.", "");
+                return ApiResponseFactory.NotFound<LoginViewModel>("Student not found with the provided credentials.", result.Error);
             }
+
+            string sessionId = Guid.NewGuid().ToString();
+            var student = result.Data;
+
+            if (string.IsNullOrEmpty(result.Data.BoundDeviceId))
+            {
+                student.BoundDeviceId = model.DeviceId;
+            }
+            else if (result.Data.BoundDeviceId.ToLower() != model.DeviceId.ToLower())
+            {
+                return ApiResponseFactory.Unauthorized<LoginViewModel>("This account is locked to another device.", "");
+            }
+
+            student.CurrentSessionId = sessionId;
+            _studentService.UpdateStudent(student);
+
+            var roles = await _userManager.GetRolesAsync(user);
+            var token = _tokenService.GenerateToken(user, roles, sessionId);
+
             var login = new LoginResponseViewModel
             {
                 Token = token,

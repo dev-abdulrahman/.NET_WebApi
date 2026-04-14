@@ -7,5 +7,6 @@ namespace Application.Api.Services.Interface
         Task<ServiceResult<Student>> Register(Student student);
         Task<ServiceResult<Student>> GetStudentByUserId(string userId);
         Task<IEnumerable<Student>> GetAllStudents();
+        void UpdateStudent(Student student);
     }
 }

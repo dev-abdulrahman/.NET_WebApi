@@ -8,6 +8,8 @@
         public Gender Gender { get; set; }
         public string Email { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
+        public string BoundDeviceId { get; set; } = string.Empty;
+        public string CurrentSessionId { get; set; } = string.Empty;
 
         // Foreign Keys
         public int? CityId { get; set; }
